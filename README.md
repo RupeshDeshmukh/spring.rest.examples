@@ -10,5 +10,12 @@ The example is self explanatory. Refer to the Java Docs for more information abo
 
 <p>
 <h2>Spring REST Advance (spring-rest-basic)</h2><br />
-This is more advance example that demonstrates CRUD REST Services implemented using Spring. You can use any server to deploy this example. Just but the example using Maven and deploy the war.
+This is more advance example that demonstrates CRUD REST Services implemented using Spring. You can use any server to deploy this example. Just build the example using Maven and deploy the war.
+Technologies Used:
+<ul>
+<li>Java 1.8</li>
+<li>Spring 4.2.5.RELEASE (MVC, JPA)</li>
+<li>Hibernate JPA Implementation</li>
+<li>Dozer 5.4.0</li>
+</ul>
 </p>
