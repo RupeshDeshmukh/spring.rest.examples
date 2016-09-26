@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+        http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping map-empty-string="false" map-null="false">
+		<class-a map-null="false" map-empty-string="false">net.atos.wl.spring.example.common.dto.EmployeeDto
+		</class-a>
+		<class-b map-null="false" map-empty-string="false">net.atos.wl.spring.example.data.entity.Employee
+		</class-b>
+	</mapping>
+
+	<mapping map-empty-string="false" map-null="false">
+		<class-a map-null="false" map-empty-string="false">net.atos.wl.spring.example.common.dto.ContactDetailsDto
+		</class-a>
+		<class-b map-null="false" map-empty-string="false">net.atos.wl.spring.example.data.entity.ContactDetails
+		</class-b>
+		<field>
+			<a>addresses</a>
+			<b set-method="addAddress" type="iterate">addresses</b>
+			<b-hint>net.atos.wl.spring.example.data.entity.Address</b-hint>
+		</field>
+	</mapping>
+
+	<mapping map-empty-string="false" map-null="false">
+		<class-a map-null="false" map-empty-string="false">net.atos.wl.spring.example.common.dto.AddressDto
+		</class-a>
+		<class-b map-null="false" map-empty-string="false">net.atos.wl.spring.example.data.entity.Address
+		</class-b>
+	</mapping>
+</mappings>

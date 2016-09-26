@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<import resource="classpath*:spring/spring-rest-data.xml" />
+
+	<!-- Scans within the base package of the application for @Component classes 
+		to configure as beans. -->
+	<context:component-scan
+		base-package="net.atos.wl.spring.example.business.service, net.atos.wl.spring.example.business.mapper" />
+
+	<!-- Dozer mapper for mapping objects. -->
+	<bean id="dozerBeanMapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozer-bean-mappings.xml</value>
+			</list>
+		</property>
+	</bean>
+</beans>
