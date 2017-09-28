@@ -33,19 +33,21 @@ public class EmployeeController {
      * REST service to create employee.
      * 
      * @param employeeDto
-     *            <code>net.atos.wl.spring.example.common.dto.EmployeeDto</code>.
+     *            <code>net.atos.wl.spring.example.common.dto.EmployeeDto</code>
+     *            .
      * @param ucBuilder
-     *            <code>org.springframework.web.util.UriComponentsBuilder</code>.
+     *            <code>org.springframework.web.util.UriComponentsBuilder</code>
+     *            .
      * @return ResponseEntity with headers and HTTP status.
      */
     @RequestMapping(value = "/employee/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createEmployee(@RequestBody final EmployeeDto employeeDto,
                                                final UriComponentsBuilder ucBuilder) {
 
-        this.employeeService.create(employeeDto);
+        final EmployeeDto persistedEmployeeDto = this.employeeService.create(employeeDto);
 
         final HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/employee/{id}").buildAndExpand(employeeDto.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/employee/{id}").buildAndExpand(persistedEmployeeDto.getId()).toUri());
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
@@ -75,7 +77,8 @@ public class EmployeeController {
      * @param id
      *            Integer of the employee to be searched.
      * @param employee
-     *            <code>net.atos.wl.spring.example.common.dto.EmployeeDto</code>.
+     *            <code>net.atos.wl.spring.example.common.dto.EmployeeDto</code>
+     *            .
      * @return ResponseEntity with employee and HTTP status.
      */
     @RequestMapping(value = "/employee/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)

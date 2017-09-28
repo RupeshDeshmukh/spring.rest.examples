@@ -3,11 +3,13 @@
  */
 package net.atos.wl.spring.example.data.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import net.atos.wl.spring.example.common.enums.State;
+import net.atos.wl.spring.example.data.entity.PersistableEntity;
 
 /**
  * Abstract JPA DAO within common JPA configuration to be applied across all
@@ -17,7 +19,7 @@ import javax.persistence.PersistenceContext;
  *            JPA Entity
  * @author a120065
  */
-public abstract class AbstractJpaDAO<T extends Serializable> implements GenericDAO<T> {
+public abstract class AbstractJpaDAO<T extends PersistableEntity> implements GenericDAO<T> {
 
     private Class<T> clazz;
 
@@ -53,7 +55,13 @@ public abstract class AbstractJpaDAO<T extends Serializable> implements GenericD
      */
     @Override
     public void delete(final T entity) {
-        this.entityManager.remove(entity);
+
+        // Do the soft delete rather than hard delete.
+        if (entity != null) {
+            entity.setRecordState(State.DELETED);
+
+            this.update(entity);
+        }
     }
 
     /**
